@@ -1,5 +1,5 @@
-# Project Name
-> Gas Consumption Forecasting with Time Series Models.
+# Gas Consumption Forecasting with Time Series Models
+> 
 
 ## Table of Contents
 * [General Info](#general-information)
