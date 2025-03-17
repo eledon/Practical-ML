@@ -1,6 +1,8 @@
 # Gas Consumption Forecasting with Time Series Models
 >
-> !(https://github.com/eledon/Practical-ML/blob/main/Gas%20Consumption%20Forecasting%20with%20Time%20Series%20Models/david-griffiths-Z3cBD6YZhOg-unsplash.jpg)
+This project forecasts gas consumption using time series analysis.
+
+![Gas Consumption Image](https://github.com/eledon/Practical-ML/blob/main/Gas%20Consumption%20Forecasting%20with%20Time%20Series%20Models/david-griffiths-Z3cBD6YZhOg-unsplash.jpg?raw=true)
 
 ## Table of Contents
 * [General Info](#general-information)
