@@ -2,8 +2,7 @@
 >
 This project forecasts gas consumption using time series analysis.
 
-![Gas Consumption Image](<img src="https://github.com/eledon/Practical-ML/blob/main/Gas%20Consumption%20Forecasting%20with%20Time%20Series%20Models/david-griffiths-Z3cBD6YZhOg-unsplash.jpg?raw=true" width="500" height="300"/>
-)
+<img src="https://raw.githubusercontent.com/eledon/Practical-ML/main/Gas%20Consumption%20Forecasting%20with%20Time%20Series%20Models/david-griffiths-Z3cBD6YZhOg-unsplash.jpg" width="500" height="300"/>)
 
 ## Table of Contents
 * [General Info](#general-information)
