@@ -4,6 +4,7 @@ This project forecasts gas consumption using time series analysis.
 
 <img src="https://raw.githubusercontent.com/eledon/Practical-ML/main/Gas%20Consumption%20Forecasting%20with%20Time%20Series%20Models/david-griffiths-Z3cBD6YZhOg-unsplash.jpg" width="500" height="300"/>)
 
+![](https://img.shields.io/badge/<WORD_ON_LEFT>-<WORD_ON_RIGHT>-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
