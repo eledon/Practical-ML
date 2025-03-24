@@ -97,6 +97,9 @@ Forecast performance was evaluated on a holdout test set:
 | Basic ARIMA(2,0,2)            | 0.1594   | 0.1197   | 1.13%   | ❌ Misses seasonality            |
 | ETS(M,N,A)                   | 0.1016   | 0.0779   | 0.736%  | ❌ Residual autocorrelation present |
 
+Below is a visual comparison of the forecasts produced by each model:
+
+![Forecast Comparison](gas_consumption_forecast.png)
 ---
 
 ## ⚙️ Getting Started
