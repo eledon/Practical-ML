@@ -13,10 +13,9 @@ Forecasting monthly residential gas consumption in California using ARIMA, SARIM
 
 ## 📘 Table of Contents
 - [Overview](#overview)
-- [Dataset](#dataset)
-- [Preliminary Data Testing](#preliminary-data-testing)
 - [Technologies](#technologies)
 - [Key Features](#key-features)
+- [Dataset](#dataset)
 - [Methodology](#methodology)
 - [Forecast Accuracy](#forecast-accuracy)
 - [Getting Started](#getting-started)
@@ -28,28 +27,6 @@ Forecasting monthly residential gas consumption in California using ARIMA, SARIM
 ## 🧭 Overview
 
 This project forecasts **monthly residential gas consumption in California** using time series models. It compares the performance of ARIMA, SARIMA, and ETS models and includes thorough diagnostics and residual analysis.
-
----
-
-## 📊 Dataset
-
-- **Source:** [U.S. EIA - California Natural Gas Consumption](https://www.eia.gov/dnav/ng/hist/n3010ca2m.htm)
-- **Frequency:** Monthly
-- **Period:** 1989–2024
-- **Unit:** Million Cubic Feet
-- **Data points:** 421
-- **Missing value imputation:** January 2024 value was imputed using the historical average for January
-
----
-
-## 🔍 Preliminary Data Testing
-
-Before modeling, we assessed the time series characteristics of the data:
-
-- **Stationarity:** ADF and KPSS tests indicated the need for seasonal differencing
-- **Distribution:** Skewness = 0.73, Kurtosis = -0.77; Q-Q plot showed heavier lower tail
-- **Variance behavior:** Log transformation was applied to stabilize variance
-- **Autocorrelation:** ACF and PACF plots indicated strong seasonal patterns
 
 ---
 
@@ -71,24 +48,47 @@ Before modeling, we assessed the time series characteristics of the data:
 
 ---
 
-## 📈 Methodology
+## 📊 Dataset
 
-1. **Exploratory Data Analysis**: Visualizations, summary stats, and seasonality analysis
-2. **Data Transformation**: Log transformation and STL decomposition
-3. **Model Building**:
-   - **Basic ARIMA** (non-seasonal)
-   - **Auto SARIMA** via `auto.arima()`
-   - **Grid SARIMA** selected as best final model
-   - **ETS (M,N,A)** for benchmark
-4. **Model Evaluation**:
-   - Forecast accuracy: RMSE, MAE, MAPE
-   - Residual diagnostics: ACF, Ljung-Box, McLeod-Li
+- **Source:** [U.S. EIA - California Natural Gas Consumption](https://www.eia.gov/dnav/ng/hist/n3010ca2m.htm)
+- **Frequency:** Monthly
+- **Period:** 1989–2024
+- **Unit:** Million Cubic Feet
+- **Data points:** 421
+- **Preprocessing:** One missing value (Jan 2024) imputed using the historical average for January
+
+---
+
+## 🧠 Methodology
+
+### 1. Preliminary Data Testing
+
+- **Stationarity:** ADF and KPSS tests indicated the need for seasonal differencing
+- **Distribution:** Skewness = 0.73, Kurtosis = -0.77; Q-Q plot showed deviation from normality (especially lower tail)
+- **Variance behavior:** Log transformation applied to stabilize variance
+- **Autocorrelation:** ACF and PACF plots showed strong seasonal effects
+
+### 2. Exploratory Data Analysis
+
+- Time series plots, histogram, Q-Q plot, STL decomposition
+
+### 3. Model Building
+
+- **Basic ARIMA** (non-seasonal)
+- **Auto SARIMA** via `auto.arima()`
+- **Grid SARIMA** selected as final model
+- **ETS (M,N,A)** model used for benchmark comparison
+
+### 4. Model Evaluation
+
+- Forecast accuracy metrics: RMSE, MAE, MAPE
+- Residual diagnostics: ACF1, Ljung-Box, McLeod-Li tests
 
 ---
 
 ## 📊 Forecast Accuracy
 
-Forecast performance was evaluated on a holdout test set. The table below summarizes error metrics only (no AIC/BIC comparison across different model families).
+Forecast performance was evaluated on a holdout test set:
 
 | Model                         | RMSE     | MAE      | MAPE    | Verdict                         |
 |------------------------------|----------|----------|---------|----------------------------------|
@@ -110,4 +110,5 @@ install.packages(c("forecast", "tseries", "ggplot2", "urca", "DescTools",
 
 # Load and run the script
 source("gas_consumption_Ca.R")
+
 
