@@ -99,7 +99,9 @@ Forecast performance was evaluated on a holdout test set:
 
 Below is a visual comparison of the forecasts produced by each model:
 
-![Forecast Comparison](gas_consumption_forecast.png)
+![Forecast Comparison](gas_consumption_forecast.png)<p align="center">
+  <img src="gas_consumption_forecast.png" width="600" alt="Forecast Comparison">
+</p>
 ---
 
 ## ⚙️ Getting Started
