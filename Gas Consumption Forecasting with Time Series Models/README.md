@@ -97,10 +97,12 @@ Forecast performance was evaluated on a holdout test set:
 | Basic ARIMA(2,0,2)            | 0.1594   | 0.1197   | 1.13%   | ❌ Misses seasonality            |
 | ETS(M,N,A)                   | 0.1016   | 0.0779   | 0.736%  | ❌ Residual autocorrelation present |
 
-Below is a visual comparison of the forecasts produced by each model:
-
-<img src="gas_consumption_forecast.png" width="600" alt="Forecast Comparison">
+<p align="center">
+  <img src="gas_consumption_forecast.png" width="600" alt="Forecast Comparison">
 </p>
+
+<p align="center"><em>Figure: Forecast comparison across models on the test set</em></p>
+
 ---
 
 ## ⚙️ Getting Started
@@ -114,5 +116,3 @@ install.packages(c("forecast", "tseries", "ggplot2", "urca", "DescTools",
 
 # Load and run the script
 source("gas_consumption_Ca.R")
-
-
