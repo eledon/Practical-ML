@@ -14,6 +14,7 @@ Forecasting monthly residential gas consumption in California using ARIMA/SARIMA
 ## 📘 Table of Contents
 - [Overview](#overview)
 - [Dataset](#dataset)
+- [Preliminary Data Testing](#preliminary-data-testing)
 - [Technologies](#technologies)
 - [Key Features](#key-features)
 - [Methodology](#methodology)
@@ -26,7 +27,7 @@ Forecasting monthly residential gas consumption in California using ARIMA/SARIMA
 
 ## 🧭 Overview
 
-This project analyzes and forecasts **monthly residential gas consumption in California** using real-world data. It demonstrates the power of time series analysis by applying ARIMA and SARIMA models, along with STL decomposition and diagnostic tests to ensure model reliability.
+This project analyzes and forecasts **monthly residential gas consumption in California** using real-world data. It demonstrates the power of time series analysis by applying ARIMA, SARIMA, and ETS models, with diagnostic testing and model comparison to ensure robust and interpretable forecasts.
 
 I created this project to:
 - Apply rigorous time series forecasting techniques.
@@ -41,6 +42,19 @@ I created this project to:
 - **Frequency:** Monthly
 - **Period:** 1989–2024
 - **Unit:** Million Cubic Feet
+- **Data point count:** 421
+- **Preprocessing:** One missing value (Jan 2024) imputed using historical January averages
+
+---
+
+## 🔍 Preliminary Data Testing
+
+Before modeling, the following diagnostics were performed:
+
+- **Stationarity:** ADF and KPSS tests confirmed the series is stationary after seasonal differencing.
+- **Distribution:** Skewness = 0.73, Kurtosis = -0.77; Q-Q plot revealed deviation from normality, particularly in the lower tail.
+- **Variance stabilization:** A log transformation was applied to reduce heteroscedasticity.
+- **Autocorrelation:** ACF/PACF plots showed clear seasonal cycles, supporting the use of SARIMA.
 
 ---
 
@@ -57,40 +71,45 @@ I created this project to:
 ## 🌟 Key Features
 
 - ✅ Real-world dataset from a government source
-- 📈 Seasonal-Trend decomposition (STL)
-- 🔁 Log transformation & data splitting
-- 🔍 Auto ARIMA/SARIMA + custom grid search
-- 🧪 Residual diagnostics: stationarity, heteroscedasticity, normality
-- 📉 Model evaluation with forecast accuracy metrics
+- 📈 STL decomposition of seasonal patterns
+- 🔁 Log transformation & train/test split
+- 🧠 ARIMA/SARIMA via both `auto.arima()` and full grid search
+- 🧪 Residual diagnostics: ACF, PACF, Shapiro-Wilk, Ljung-Box, McLeod-Li
+- 📉 Forecast evaluation on test set using RMSE, MAE, MAPE
 
 ---
 
 ## 📈 Methodology
 
-1. **Exploratory Data Analysis**:
-   - Line plots, histograms, Q-Q plots
-   - ACF and PACF for pattern detection
-2. **Transformation & Decomposition**:
-   - Log transformation
-   - STL decomposition into trend, seasonality, and remainder
-3. **Modeling Approaches**:
-   - ARIMA and SARIMA with both `auto.arima()` and custom grid search
-   - ETS for comparison
-4. **Diagnostics**:
-   - ADF, KPSS, Shapiro-Wilk, McLeod-Li, Ljung-Box tests
-5. **Forecasting**:
-   - Comparison of models on holdout test set
+1. **Exploratory Data Analysis:**
+   - Time series plots, histograms, Q-Q plots
+   - ACF/PACF analysis and seasonal decomposition
+2. **Transformation & Decomposition:**
+   - Log transformation to stabilize variance
+   - STL to extract trend, seasonality, and remainder
+3. **Model Building:**
+   - ARIMA and SARIMA (auto and grid search)
+   - ETS model for benchmark comparison
+4. **Model Diagnostics:**
+   - ADF, KPSS, McLeod-Li, and Ljung-Box residual tests
+   - Visual inspection of residuals
+5. **Model Selection:**
+   - Final model: **SARIMA(1,0,3)(0,1,1)[12]**
+   - Selected based on lowest AIC/BIC, minimal residual autocorrelation, and low test-set error
 
 ---
 
 ## 📊 Forecast Performance
 
-**SARIMA with custom hyperparameters** produced the most accurate and stable forecasts.
+### 🔎 Model Comparison Summary
 
-Models were evaluated based on:
-- Forecast error (RMSE, MAE)
-- Residual stationarity and normality
-- Absence of autocorrelation or heteroscedasticity
+| Model                         | AIC      | BIC      | MAPE     | Ljung-Box p-value | McLeod-Li Result | Verdict         |
+|------------------------------|----------|----------|----------|-------------------|------------------|------------------|
+| SARIMA(1,0,3)(0,1,1)[12]      | **-577.99** | **-555.18** | **0.655%** | 0.30              | Mild ARCH         | ✅ Best model     |
+| Auto SARIMA(2,0,1)(0,1,1)[12] | -577.48 | -554.67 | 0.656%  | 0.36              | Mild ARCH         | Good alternative |
+| ETS(M,N,A)                   | 455.04   | 512.61   | 0.736%  | < 0.001           | Not tested        | ❌ Weakest model |
+
+✅ The **SARIMA(1,0,3)(0,1,1)[12]** model provided the most accurate and well-behaved forecasts, outperforming both the auto-selected SARIMA and ETS benchmark.
 
 ---
 
@@ -103,6 +122,8 @@ To reproduce this project:
 install.packages(c("forecast", "tseries", "ggplot2", "urca", "DescTools",
                    "FinTS", "patchwork", "TSA", "fUnitRoots", "dplyr"))
 
-# Run the main script
+# Run the analysis
+# Source the script or open the R Markdown notebook
 source("gas_consumption_Ca.R")
+
 
