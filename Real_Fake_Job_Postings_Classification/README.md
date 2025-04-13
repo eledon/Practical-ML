@@ -3,7 +3,7 @@
 
 Classifying job postings as real or fraudulent using NLP techniques and machine learning models including **Logistic Regression**, **SVM**, and **XGBoost**.
 
-<img src="Real_Fake_Job_Postings_Classification/pexels-ron-lach-9832718.jpg" width="500" height="300"/>
+<img src="pexels-ron-lach-9832718.jpg" width="500" height="300"/>
 
 ![Python](https://img.shields.io/badge/Python-TextProcessing-blue?logo=python)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
