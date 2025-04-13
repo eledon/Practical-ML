@@ -13,16 +13,16 @@ Classifying job postings as real or fraudulent using NLP techniques and machine 
 ---
 
 ## 📘 Table of Contents
-- [Overview](#overview)
-- [Technologies](#technologies)
-- [Research Question](#research-question)
-- [Dataset](#dataset)
-- [Exploratory Data Analysis](#exploratory-data-analysis)
-- [Text Preprocessing](#text-preprocessing)
-- [Modeling](#modeling)
-- [Model Evaluation](#model-evaluation)
-- [Explainability](#explainability)
-- [Conclusion](#conclusion)
+- [Overview](#-overview)
+- [Technologies](#-technologies)
+- [Research Question](#-research-question)
+- [Dataset](#-dataset)
+- [Exploratory Data Analysis](#-exploratory-data-analysis)
+- [Text Preprocessing](#-text-preprocessing)
+- [Modeling](#-modeling)
+- [Model Evaluation](#-model-evaluation)
+- [Explainability](#-explainability)
+- [Conclusion](#-conclusion)
 
 ---
 
